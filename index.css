@@ -41,7 +41,9 @@ label {
   font-weight: bold;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="time"],
+input[type="submit"] {
   width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 20px;
@@ -50,10 +52,22 @@ input[type="text"] {
   box-sizing: border-box;
 }
 
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  margin-bottom: 5px;
+}
+
+.input-container input {
+  margin-bottom: 10px;
+}
+
 input[type="submit"] {
   background-color: #8a1f58;
   color: white;
-  padding: 12px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -67,23 +81,7 @@ input[type="submit"]:hover {
 }
 
 .tasks-content {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2px;
-  width: 100%;
-
-}
-
-.task {
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
- } 
- .task-bar {
-  display: flex;
-  flex-direction: row;
-  overflow-x: scroll;
+  margin-top: 10px;
 }
 
 .task-container {
@@ -95,16 +93,25 @@ input[type="submit"]:hover {
   padding: 25px;
   border-style:groove;
 }
+  
 
 .task-text {
   flex-grow: 1;
+}
+ 
+.due-time {
+  position: absolute; /* Position relative to the task container */
+  top: 60px; /* Adjust top position as needed */
+  right: 5px; /* Adjust right position as needed */
+  color: #440f2b; /* Change the color of the time display */
+  font-size: 14px;
+
 }
 
 .delete-button {
   cursor: pointer;
   margin-left: 10px;
 }
-
 .delete-button,
 .edit-button {
   background-color: #8a1f58;
@@ -114,13 +121,4 @@ input[type="submit"]:hover {
   cursor: pointer;
   width: 50px;
   height: 30px;
-}
-
-.due-time {
-  position: absolute; /* Position relative to the task container */
-  top: 60px; /* Adjust top position as needed */
-  right: 5px; /* Adjust right position as needed */
-  color: #440f2b; /* Change the color of the time display */
-  font-size: 14px;
-
 }
