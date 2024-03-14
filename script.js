@@ -5,11 +5,22 @@ document.getElementById("taskForm").addEventListener("submit", function(event) {
   var taskText = taskInput.value.trim();
   var dueTime = dueTimeInput.value.trim();
   if (taskText !== "" && dueTime !== "") {
-    addTaskToList(taskText, dueTime);
+    // Convert 24-hour time to 12-hour format with AM/PM
+    var formattedDueTime = formatDueTime(dueTime);
+    addTaskToList(taskText, formattedDueTime);
     taskInput.value = "";
     dueTimeInput.value = "";
   }
 });
+
+function formatDueTime(dueTime) {
+  var [hours, minutes] = dueTime.split(":");
+  var hour = parseInt(hours);
+  var ampm = hour >= 12 ? 'PM' : 'AM';
+  hour = hour % 12;
+  hour = hour ? hour : 12; // Handle midnight (00:00) as 12 AM
+  return hour + ':' + minutes + ' ' + ampm;
+}
 
 function addTaskToList(taskText, dueTime) {
   var tasksContent = document.getElementById("tasksContent");
@@ -44,7 +55,9 @@ function addTaskToList(taskText, dueTime) {
 
     var newDueTime = prompt("Edit due time (HH:MM AM/PM):", dueTime);
     if (newDueTime !== null && newDueTime.trim() !== "") {
-      dueTimeDiv.textContent = "Due: " + newDueTime.trim();
+      // Convert edited due time to 12-hour format with AM/PM
+      var formattedNewDueTime = formatDueTime(newDueTime);
+      dueTimeDiv.textContent = "Due: " + formattedNewDueTime;
     }
   });
 
@@ -55,4 +68,3 @@ function addTaskToList(taskText, dueTime) {
 
   tasksContent.appendChild(taskContainer);
 }
- 
