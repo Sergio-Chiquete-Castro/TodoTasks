@@ -55,15 +55,4 @@ function addTaskToList(taskText, dueTime) {
 
   tasksContent.appendChild(taskContainer);
 }
-
-document.getElementById("task").addEventListener("input", function(event) {
-  if (event.inputType === "insertLineBreak") {
-    this.blur(); // Blur the input field if Enter key is pressed
-  }
-});
-
-document.getElementById("dueTime").addEventListener("input", function(event) {
-  if (event.inputType === "insertLineBreak") {
-    this.blur(); // Blur the input field if Enter key is pressed
-  }
-});
+ 
