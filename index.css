@@ -122,3 +122,28 @@ input[type="submit"]:hover {
   width: 50px;
   height: 30px;
 }
+
+
+
+
+input[type="time"] {
+  /* Add your desired styles */
+  appearance: textfield; /* Override browser default styles */
+  -webkit-appearance: textfield; /* For Safari/Chrome */
+  -moz-appearance: textfield; /* For Firefox */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Style the arrow button of the time input (for browsers that support it) */
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none; /* Hide the default arrow button */
+}
+
+/* Style the clock icon of the time input (for browsers that support it) */
+input[type="time"]::-webkit-clock-picker-button {
+  display: none; /* Hide the clock icon */
+}
